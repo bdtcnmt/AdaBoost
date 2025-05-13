@@ -1,4 +1,5 @@
 import numpy as np
+import subprocess
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 
@@ -11,6 +12,7 @@ def plot_error_curve(rounds, train_errors, test_errors):
     plt.title("Training and Testing Error vs Boosting Rounds")
     plt.legend()
     plt.grid(True)
+    plt.savefig("error_curve.png")
     plt.show()
 
 def plot_comparison_weak_vs_boost(y_true, stump_scores, boost_scores):
@@ -35,4 +37,6 @@ def plot_comparison_weak_vs_boost(y_true, stump_scores, boost_scores):
     plt.title("ROC Comparison: Weak Learner vs AdaBoost")
     plt.legend(loc="lower right")
     plt.grid(True)
+    plt.savefig("roc_comparison.png")
+    subprocess.run(["xdg-open", "roc_comparison.png"])
     plt.show()
